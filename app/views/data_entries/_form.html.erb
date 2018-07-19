@@ -1,0 +1,18 @@
+
+
+
+<%= form_with(model: data_entry ,local: true) do |f| %>
+<%= f.hidden_field :form_id %>
+
+
+<%= f.fields_for :properties,OpenStruct.new(@data_entry.properties) do |builder| %>
+
+  <% @data_entry.form.form_fields.each do |field| %>
+    <%= render "data_entries/fields/text_field", field: field, f: builder %>
+  <% end %>
+<% end %>
+
+<div class="action">
+	<%= f.submit "Submit" ,class: "btn btn-primary"%>
+</div>
+<% end %>

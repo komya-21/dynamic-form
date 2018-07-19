@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+
+<% @data_entry.properties.each do |name, value| %>
+
+<p>
+  <b><%= name.humanize %>:</b>
+  <%= value %>
+</p>
+<% end %>
+<%= link_to 'Edit', edit_data_entry_path(@data_entry) %> |
+<%= link_to 'Back', forms_path%>
