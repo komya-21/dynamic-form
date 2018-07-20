@@ -17,10 +17,10 @@
         <td><%= form.name %></td>
         <td><%= link_to 'Show', form %></td>
         <td><%= link_to 'Edit', edit_form_path(form) %></td>
-        <td><%#= link_to 'Destroy', form, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <%= link_to "Add Entry",new_data_entry_path(form_id: form.id) %>
+        <td><%= link_to 'Destroy', form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+         <td> <%= link_to "Add Entry",new_data_entry_path(form_id: form.id) %></td>
           
-        </td>
+       
         <td><%= link_to "All Entries",index1_data_entries_path(form_id: form.id) %></td>
       </tr>
     <% end %>
