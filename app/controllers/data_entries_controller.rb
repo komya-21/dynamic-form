@@ -64,7 +64,7 @@ class DataEntriesController < ApplicationController
   def destroy
     @data_entry.destroy
     respond_to do |format|
-      format.html { redirect_to data_entries_url, notice: 'Data entry was successfully destroyed.' }
+      format.html { redirect_to forms_path, notice: 'Data entry was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

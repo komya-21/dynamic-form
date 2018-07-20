@@ -1,15 +1,14 @@
  <table class="table table-striped" >
 
   <% @data_entry = DataEntry.find_by(form_id: params[:form_id]) %>
-  <% @data_entries = DataEntry.where(form_id: params[:form_id])
- %>
-          
+  <% @data_entries = DataEntry.where(form_id: params[:form_id]) %>
+         
                 <thead>
                     <tr>   
-                       <%# @data_table_entries.each do |data| %>   
+                         <% if @data_entry.present? %>
                        <% @data_entry.properties.each do |k, v| %>
 
-                <%# data.properties.each do |k,v| %>
+                
                         <th><%="#{k}"%></th>
                         <% end %>
                      </tr>
@@ -20,12 +19,18 @@
                      <% @data_entries.each do |data| %>
                      <% data.properties.each do |k,v| %>
                       <td><%="#{v}"%></td>
+
                       <% end %>
+
+                      <td>
+                        <%= link_to 'Show',data,class: "btn btn-warning btn-sm" %>
+                        <%= link_to 'Edit',edit_data_entry_path(data),class: "btn btn-success btn-sm" %>
+                        <%= link_to 'Delete', data, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger btn-sm" %></td>
                     </tr>
                 <% end %>
               </tbody>
               </table>
-                       
+                       <% end %>
                       
                         </div>
                     </div>

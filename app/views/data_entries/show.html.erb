@@ -1,6 +1,11 @@
+
+
+
 <p id="notice"><%= notice %></p>
 
-
+<div class="panel panel-info">
+	 <div class="panel-heading">Details</div>
+	<div class="panel-body">
 <% @data_entry.properties.each do |name, value| %>
 
 <p>
@@ -8,5 +13,7 @@
   <%= value %>
 </p>
 <% end %>
-<%= link_to 'Edit', edit_data_entry_path(@data_entry) %> |
-<%= link_to 'Back', forms_path%>
+</div>
+<%= link_to 'Edit', edit_data_entry_path(@data_entry),class: "btn btn-link" %> |
+<%= link_to 'Back', forms_path ,class: "btn btn-link"%>
+</div>
