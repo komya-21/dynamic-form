@@ -3,7 +3,14 @@
 
 <p class="navbar-text pull-right">
 <% if user_signed_in? %>
-  <strong><%= current_user.role %></strong>
+Welcome,
+<% if current_user.role == "Admin" %>
+<strong><%= current_user.role %></strong>
+<% elsif current_user.role == "Employee" && current_user.employee.present? %>
+  <strong><%= current_user.employee.name %></strong>
+  <% else %>
+  logged in as,<strong><%= current_user.email %></strong>
+  <% end %>
   <%#= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
   <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link',class: "btn btn-success"  %>
  
