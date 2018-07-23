@@ -1,7 +1,8 @@
  <table class="table table-bordered" >
 
-  <% @data_entry = DataEntry.find_by(form_id: params[:form_id]) %>
-  <% @data_entries = DataEntry.where(form_id: params[:form_id]) %>
+  
+
+  
          
                 <thead>
                     <tr>   
@@ -11,7 +12,11 @@
                 
                         <th><%="#{k}"%></th>
                         <% end %>
+                        <% if current_user.role == "Admin" %>
+                        <th>Data Entry By</th>
+                        <% end %>
                         <th>Actions</th>
+
                      </tr>
                 </thead>
             
@@ -21,6 +26,9 @@
                      <% data.properties.each do |k,v| %>
                       <td><%="#{v}"%></td>
 
+                      <% end %>
+                      <% if current_user.role == "Admin" %>
+                      <td><%= data.employee.name if data.employee.present? %></td>
                       <% end %>
 
                       <td>

@@ -33,6 +33,7 @@ class DataEntriesController < ApplicationController
 
     respond_to do |format|
       if @data_entry.save
+        @data_entry.update(employee_id: current_user.employee_id)
         format.html { redirect_to @data_entry, notice: 'Data entry was successfully created.' }
         format.json { render :show, status: :created, location: @data_entry }
       else
@@ -42,6 +43,12 @@ class DataEntriesController < ApplicationController
     end
   end
   def index1
+    @data_entry = DataEntry.find_by(form_id: params[:form_id]) 
+   @data_entries = DataEntry.where(form_id: params[:form_id]) 
+   if current_user.role == "Employee"
+    
+    @data_entries = @data_entries.where(employee_id: current_user.employee_id) 
+  end
     
   end
 
@@ -77,7 +84,7 @@ class DataEntriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def data_entry_params
-      params.require(:data_entry).permit(:form_id).tap do |whitelisted|
+      params.require(:data_entry).permit(:form_id,:employee_id).tap do |whitelisted|
         whitelisted[:properties] = params[:data_entry][:properties]
       end
     end

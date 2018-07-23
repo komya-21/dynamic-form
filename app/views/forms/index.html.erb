@@ -15,18 +15,25 @@
     <%= hidden_field_tag 'form_id',form.id %>
       <tr>
         <td><%= form.name %></td>
+        <% if current_user.role == "Admin" %>
         <td><%= link_to 'Show', form ,class: "btn btn-link "%>
         <%= link_to 'Edit', edit_form_path(form),class: "btn btn-link " %>
         <%= link_to 'Destroy', form, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-link " %></td>
+        <% end %>
          <td> <%= link_to "Add Entry",new_data_entry_path(form_id: form.id),class: "btn btn-warning btn-sm" %>
           
-       
+      
         <%= link_to "All Entries",index1_data_entries_path(form_id: form.id),class: "btn btn-pill btn-danger btn-sm" %></td>
+        
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+<% if current_user.role == "Admin" %>
 <%= link_to 'New Form', new_form_path ,class: "btn btn-primary"%>
+<% end %>
+
+<%= link_to 'Back', data_entries_path ,class: "btn btn-default"%>
+

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180719080324) do
+ActiveRecord::Schema.define(version: 20180723063623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,19 @@ ActiveRecord::Schema.define(version: 20180719080324) do
     t.datetime "updated_at", null: false
     t.bigint "form_id"
     t.text "properties"
+    t.bigint "employee_id"
+    t.index ["employee_id"], name: "index_data_entries_on_employee_id"
     t.index ["form_id"], name: "index_data_entries_on_form_id"
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "address"
+    t.string "contact"
+    t.string "employee_no"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "form_fields", force: :cascade do |t|
@@ -50,8 +62,13 @@ ActiveRecord::Schema.define(version: 20180719080324) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "role"
+    t.bigint "employee_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["employee_id"], name: "index_users_on_employee_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "data_entries", "employees"
+  add_foreign_key "users", "employees"
 end

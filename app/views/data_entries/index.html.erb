@@ -1,14 +1,23 @@
 
 
-<h1><font color: "red"><i>Select form type for Data Entry</i></font></h1>
+<% if current_user.role == "Admin" %>
+<%= link_to "Employees" ,employees_path ,class: "btn btn-default" %>
+<% end %>
+<%= link_to "Forms" ,forms_path ,class: "btn btn-default" %>
+
+
 <%= form_tag new_data_entry_path, method: :get do %>
 <% if Form.present? %>
+<div class="field">
 <div class="col-md-6">
 
   <%= select_tag :form_id, options_from_collection_for_select(Form.all, :id, :name) , class: "form-control" %>
 </div>
+</div>
   <%= submit_tag "New Data Entry", name: nil ,class: "btn btn-primary"%>
 <% end %>
 <% end %>
+<% if current_user.role == "Admin" %>
 
 <%= link_to "Create New Form" ,new_form_path,class: "btn btn-link" %>
+<% end %>
