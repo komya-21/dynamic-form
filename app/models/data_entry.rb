@@ -1,6 +1,6 @@
 class DataEntry < ApplicationRecord
 	#attr_accessor :form_id, :properties
-  belongs_to :form
+  belongs_to :form , dependent: :destroy
   serialize :properties, Hash
   validate :validate_properties
 

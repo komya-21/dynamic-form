@@ -2,7 +2,7 @@
 
 <h1>Forms</h1>
 
-<table class="table table-striped">
+<table class="table table-bordered">
   <thead>
     <tr>
       <th>Name</th>
@@ -15,13 +15,13 @@
     <%= hidden_field_tag 'form_id',form.id %>
       <tr>
         <td><%= form.name %></td>
-        <td><%= link_to 'Show', form %></td>
-        <td><%= link_to 'Edit', edit_form_path(form) %></td>
-        <!-- <td><%#= link_to 'Destroy', form, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
-         <td> <%= link_to "Add Entry",new_data_entry_path(form_id: form.id) %></td>
+        <td><%= link_to 'Show', form ,class: "btn btn-link "%>
+        <%= link_to 'Edit', edit_form_path(form),class: "btn btn-link " %>
+        <%= link_to 'Destroy', form, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-link " %></td>
+         <td> <%= link_to "Add Entry",new_data_entry_path(form_id: form.id),class: "btn btn-warning btn-sm" %>
           
        
-        <td><%= link_to "All Entries",index1_data_entries_path(form_id: form.id) %></td>
+        <%= link_to "All Entries",index1_data_entries_path(form_id: form.id),class: "btn btn-pill btn-danger btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>
