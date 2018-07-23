@@ -14,7 +14,7 @@
 <div class="row">
   <div class="col-md-6">
   <div class="field">
-    <%#= form.label :name %>
+    <%= form.label :name %>
     <%= form.text_field :name, id: :employee_name,placeholder: "Name",class: "form-control" %>
   </div>
 </div>
@@ -22,7 +22,7 @@
   <div class="row">
      <div class="col-md-6">
   <div class="field">
-    <%#= form.label :email %>
+    <%= form.label :email %>
     <%= form.text_field :email, id: :employee_email,placeholder: "Email",class: "form-control" %>
   </div>
 </div>
@@ -31,7 +31,7 @@
    <div class="col-md-6">
 
   <div class="field">
-    <%#= form.label :address %>
+    <%= form.label :address %>
     <%= form.text_field :address, id: :employee_address, placeholder: "Address" ,class: "form-control" %>
   </div>
 </div>
@@ -40,7 +40,7 @@
    <div class="col-md-6">
 
   <div class="field">
-    <%#= form.label :contact %>
+    <%= form.label :contact %>
     <%= form.text_field :contact, id: :employee_contact, placeholder: "Contact", class: "form-control" %>
   </div>
 </div>
@@ -49,8 +49,9 @@
    <div class="col-md-6">
 
   <div class="field">
-    <%#= form.label :employee_no %>
-    <%= form.text_field :employee_no, id: :employee_employee_no , placeholder: "Employee No", class: "form-control"%>
+    <%= form.label :employee_no %>
+<!--     <label class="col-sm-6 control-label">Employee  No</label>
+ -->    <%= form.text_field :employee_no, id: :employee_employee_no , placeholder: "Employee No",readonly: true,:value=> @employee.employee_no, class: "form-control"%>
   </div>
 </div>
 </div>
